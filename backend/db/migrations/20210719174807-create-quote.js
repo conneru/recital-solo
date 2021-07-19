@@ -10,9 +10,11 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
+        references: { model: "Users" },
       },
       movieId: {
         type: Sequelize.INTEGER,
+        references: { model: "Movies" },
       },
       url: {
         type: Sequelize.STRING(255),

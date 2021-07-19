@@ -51,7 +51,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.associate = function (models) {
-    // associations can be defined here
+    User.hasMany(models.Movie, { foriegnKey: "userId" });
+    User.hasMany(models.Quote, { foriegnKey: "userId" });
   };
 
   User.prototype.toSafeObject = function () {
