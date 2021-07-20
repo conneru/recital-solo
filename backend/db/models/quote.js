@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Quote.associate = function (models) {
-    Quote.belongsTo(models.User, { foriegnKey: "userId" });
-    Quote.belongsTo(models.Movie, { foriegnKey: "movieId" });
+    Quote.belongsTo(models.User, { foreignKey: "userId" });
+    Quote.belongsTo(models.Movie, { foreignKey: "movieId" });
   };
   return Quote;
 };

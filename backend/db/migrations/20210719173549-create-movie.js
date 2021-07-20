@@ -29,18 +29,23 @@ module.exports = {
         allowNull: false,
       },
       imageUrl: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(255),
       },
       length: {
         type: Sequelize.INTEGER,
       },
+      genre: {
+        type: Sequelize.STRING(20),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
       },
     });
   },
