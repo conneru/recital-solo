@@ -29,6 +29,18 @@ export const fetchOneMovie = (id) => async (dispatch) => {
   }
 };
 
+export const submitForm = (payload) => async(dispatch) => {
+  const res = await csrfFetch('/api/movies', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  const movie = await res.json()
+  if(res.ok)
+  dispatch(addMovie(movie))
+}
+
 const initialState = { movies: [] };
 
 const movieReducer = (state = initialState, action) => {

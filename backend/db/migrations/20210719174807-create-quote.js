@@ -17,7 +17,7 @@ module.exports = {
         references: { model: "Movies" },
       },
       url: {
-        type: Sequelize.STRING(255),
+        type: Sequelize.STRING,
       },
       title: {
         type: Sequelize.STRING(100),

@@ -1,9 +1,10 @@
 import { fetchMovies, fetchOneMovie } from "../../store/movie";
-import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./MoviePage.css";
 import ReactPlayer from "react-player";
+import AudioPlayer from "../AudioPlayer";
 
 function MoviePage() {
   const { id } = useParams();
@@ -11,7 +12,7 @@ function MoviePage() {
 
   useEffect(() => {
     dispatch(fetchOneMovie(id));
-  }, []);
+  }, [dispatch]);
 
   const movie = useSelector((state) => state.movieState.movies[0]);
 
@@ -24,7 +25,8 @@ function MoviePage() {
       <p>Dir. {movie.director}</p>
       <p>{movie.description}</p>
       <img src={movie.imageUrl} alt={movie.title} />
-      <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
+      <AudioPlayer quotes={movie.Quotes} />
+      {/* <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" /> */}
     </div>
   );
 }
