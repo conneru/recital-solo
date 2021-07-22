@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
-import {  useSelector,useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import {deleteQuote} from '../../store/quote'
-import {fetchMovies} from '../../store/movie'
-
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useParams } from "react-router-dom";
+import { deleteQuote } from "../../store/quote";
+import { fetchMovies, fetchOneMovie } from "../../store/movie";
 
 function AudioPlayer({ quotes }) {
   const [url, setUrl] = useState("");
   const [title, setTitle] = useState("");
+  const { id } = useParams();
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchMovies())
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchOneMovie(id));
+  }, [dispatch]);
+
   function handleClick(e) {
     const [title, url] = e.target.value.split(",");
     setUrl(url);
@@ -37,10 +38,14 @@ function AudioPlayer({ quotes }) {
           >
             ▶
           </button>
-          {user.id === quote.userId ? <button onClick={()=> dispatch(deleteQuote(quote.id))}>Delete</button> : null}
+          {user.id === quote.userId ? (
+            <button onClick={() => dispatch(deleteQuote(quote.id))}>
+              Delete
+            </button>
+          ) : null}
         </div>
       ))}
-      {user && <Link to='/quote/create'>Add a new quote!</Link>}
+      {user && <Link to="/quote/create">Add a new quote!</Link>}
     </div>
   );
 }

@@ -4,21 +4,19 @@ const { Movie, Quote } = require("../../db/models/");
 
 const router = express.Router();
 
-
 router.post(
   "",
   asyncHandler(async (req, res) => {
     const movie = await Movie.create(req.body);
-
-    return res.redirect(`${req.baseUrl}`)
+    res.redirect(`${req.baseUrl}`);
+    return res.json(movie);
   })
 );
 
-
 router.get(
-  "",
+  "/",
   asyncHandler(async (req, res) => {
-    const movies = await Movie.findAll({ include: [Quote] });
+    const movies = await Movie.findAll();
 
     return res.json(movies);
   })
@@ -29,21 +27,24 @@ router.get(
   asyncHandler(async (req, res) => {
     const movie = await Movie.findByPk(req.params.id, { include: [Quote] });
 
-    return res.json([movie]);
+    return res.json(movie);
   })
 );
 
 router.delete(
   "/:id",
   asyncHandler(async (req, res) => {
-    await Movie.destroy({where:{id:req.params.id}});
+    await Movie.destroy({ where: { id: req.params.id } });
   })
 );
 
 router.put(
   "/:id",
   asyncHandler(async function (req, res) {
-    const movie = await Movie.update({...req.body},{where:{id: req.params.id}})
+    const movie = await Movie.update(
+      { ...req.body },
+      { where: { id: req.params.id } }
+    );
     return res.json(movie);
   })
 );

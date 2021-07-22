@@ -10,12 +10,11 @@ import "./HomePage.css";
 function Home() {
   const dispatch = useDispatch();
 
-  const movies = useSelector((state) => state.movieState.movies);
-
   useEffect(() => {
     dispatch(fetchMovies());
   }, [dispatch]);
 
+  const movies = useSelector((state) => state.movieState.movies);
   return (
     <div>
       <h1>Recital</h1>
