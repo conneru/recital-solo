@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Home from "./components/HomePage";
 import MoviePage from "./components/MoviePage";
 import CreateMovie from './components/CreateMovie'
+import EditMovie from './components/EditMovie'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path='/movie/create'>
             <CreateMovie/>
+          </Route>
+          <Route path='/movie/edit/:id'>
+          <EditMovie/>
           </Route>
           <Route>
             <h1>404 Page Not Found</h1>

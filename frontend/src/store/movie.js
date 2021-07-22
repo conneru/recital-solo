@@ -2,10 +2,17 @@ import { csrfFetch } from "./csrf";
 
 const GET_MOVIES = "movie/getMovies";
 const ADD_MOVIE = "movie/addMovie";
+const REMOVE_MOVIE = 'movie/removeMovie'
+const EDIT_MOVIE = 'movie/editMovie'
+
+export const updateMovie = (movie)=>{
+  return {type:EDIT_MOVIE, movie};
+}
 
 export const getMovies = (movies) => {
   return { type: GET_MOVIES, movies };
 };
+
 
 export const addMovie = (newMovie) => {
   return {
@@ -13,6 +20,33 @@ export const addMovie = (newMovie) => {
     newMovie,
   };
 };
+
+export const removeMovie = (movieId) => ({
+  type: REMOVE_MOVIE,
+  movieId,
+});
+
+export const editMovie = (payload, id) => async (dispatch) => {
+const res = await csrfFetch(`/api/movies/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  const movie = await res.json()
+  if(res.ok){
+  dispatch(updateMovie(movie))
+  }
+};
+
+export const deleteMovie = (id)=> async (dispatch)=>{
+  const res = await csrfFetch(`/api/movies/${id}`,{
+    method:'DELETE'
+  })
+  if(res.ok){
+    dispatch(removeMovie(id))
+  }
+}
 
 export const fetchMovies = () => async (dispatch) => {
   const res = await fetch("/api/movies");
@@ -52,6 +86,18 @@ const movieReducer = (state = initialState, action) => {
         ...state,
         movies: [...state.movies, action.newMovie],
       };
+    case REMOVE_MOVIE:
+      return {
+        ...state,
+        movies: [state.movies.filter(movie=> movie.id !== action.movieId)]
+      }
+    case EDIT_MOVIE:
+      const newState = Object.assign({},state)
+      let movie = newState.movies.find(obj=> obj.id === action.movieId)
+      movie = action.movie
+      return{
+        ...newState
+      }
     default:
       return state;
   }

@@ -33,4 +33,19 @@ router.get(
   })
 );
 
+router.delete(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    await Movie.destroy({where:{id:req.params.id}});
+  })
+);
+
+router.put(
+  "/:id",
+  asyncHandler(async function (req, res) {
+    const movie = await Movie.update({...req.body},{where:{id: req.params.id}})
+    return res.json(movie);
+  })
+);
+
 module.exports = router;
