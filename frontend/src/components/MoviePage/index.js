@@ -21,32 +21,37 @@ function MoviePage() {
   // const movie = movies.find((movie) => movie.id === Number(id));
   const user = useSelector((state) => state.session.user);
   const movie = useSelector((state) => state.movieState.curMovie);
-  const quotes = useSelector((state) => state.movieState.quotes);
 
   return (
     <div className="movieContainer">
-      {movie.userId === user.id ? (
-        <button
-          onClick={() =>
-            dispatch(deleteMovie(movie.id)).then(history.push("/movies"))
-          }
-        >
-          delete
-        </button>
+      {user ? (
+        movie.userId === user.id ? (
+          <button
+            onClick={() =>
+              dispatch(deleteMovie(movie.id)).then(history.push("/movies"))
+            }
+          >
+            delete
+          </button>
+        ) : null
       ) : null}
-      {movie.userId === user.id ? (
-        <button onClick={() => history.push(`/movie/edit/${movie.id}`)}>
-          edit
-        </button>
+      {user ? (
+        movie.userId === user.id ? (
+          <button onClick={() => history.push(`/movie/edit/${movie.id}`)}>
+            edit
+          </button>
+        ) : null
       ) : null}
       <img id="headerImg" src={movie.imageUrl} alt={movie.title} />
-      <h1>
-        {movie.title} <span>({movie.releaseDate})</span>
-      </h1>
-      <p>Dir. {movie.director}</p>
-      <p>{movie.description}</p>
-      <img src={movie.imageUrl} alt={movie.title} />
-      <AudioPlayer quotes={quotes} />
+      <img id="cover" src={movie.imageUrl} alt={movie.title} />
+      <div id="movieInfo">
+        <h1>
+          {movie.title} <span>({movie.releaseDate})</span>
+        </h1>
+        <p>Dir. {movie.director}</p>
+        <p>{movie.description}</p>
+      </div>
+      <AudioPlayer />
       {/* <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" /> */}
     </div>
   );
