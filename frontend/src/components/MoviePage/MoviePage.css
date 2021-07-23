@@ -1,0 +1,118 @@
+.movieContainer {
+  position: fixed;
+  background-color: white;
+  width: 975px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  /* min-height: 1000px; */
+}
+
+#cover {
+  padding-top: 50px;
+  padding-right: 75px;
+  display: inline;
+  max-width: 200px;
+  max-height: 400px;
+  /* margin-right: 140px; */
+  align-self: flex-end;
+}
+
+body {
+  background-color: rgb(123, 123, 123);
+  padding: 0px;
+  margin: 0px;
+  font-family: Helvetica, sans-serif;
+}
+
+#headerImg {
+  object-fit: cover;
+  object-position: bottom;
+  min-width: 975px;
+  height: 180px;
+  overflow: visible;
+}
+
+#movieInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 250px;
+  padding-left: 675px;
+
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  overflow: auto;
+}
+
+#audioPlayer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  padding-left: 50px;
+  padding-top: 180px;
+}
+
+#createQuote {
+  padding-top: 20px;
+  padding-left: 90px;
+}
+
+span {
+  font-style: italic;
+}
+
+#quotesName {
+  padding-left: 20px;
+}
+
+.playButton {
+  display: inline-block;
+}
+
+#quoteTitle {
+  display: inline-block;
+  padding-left: 20px;
+}
+
+#h4Title {
+  padding-left: 30px;
+}
+
+#deleteBut {
+  background-color: #c60404;
+  color: white;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  max-width: 113px;
+  padding: 9px 20px 9px 12px;
+  border-radius: 11px;
+  line-height: 24px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  overflow: hidden;
+  margin-left: 850px;
+}
+#editBut {
+  background-color: #1208d5;
+  color: white;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  max-width: 113px;
+  padding: 9px 20px 9px 12px;
+  border-radius: 11px;
+  line-height: 24px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  overflow: hidden;
+  margin-left: 850px;
+}
