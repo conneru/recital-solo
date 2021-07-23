@@ -30,6 +30,7 @@ function AudioPlayer() {
       <h3 id="quotesName">
         Quotes from <span>{movie.title} </span>
       </h3>
+      <h4 id="h4Title">{title}</h4>
       <audio controls autoPlay src={url} type="audio/mpeg" />
       {quotes.map((quote) => (
         <div>

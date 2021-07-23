@@ -77,3 +77,42 @@ span {
   display: inline-block;
   padding-left: 20px;
 }
+
+#h4Title {
+  padding-left: 30px;
+}
+
+#deleteBut {
+  background-color: #c60404;
+  color: white;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  max-width: 113px;
+  padding: 9px 20px 9px 12px;
+  border-radius: 11px;
+  line-height: 24px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  overflow: hidden;
+  margin-left: 850px;
+}
+#editBut {
+  background-color: #1208d5;
+  color: white;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  max-width: 113px;
+  padding: 9px 20px 9px 12px;
+  border-radius: 11px;
+  line-height: 24px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  overflow: hidden;
+  margin-left: 850px;
+}

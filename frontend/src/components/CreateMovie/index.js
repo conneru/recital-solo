@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { fetchMovies, submitForm } from "../../store/movie";
 
+import "./CreateMovie.css";
+
 function CreateMovie() {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
@@ -38,7 +40,7 @@ function CreateMovie() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="create" onSubmit={handleSubmit}>
       <label for="title">Movie Title</label>
       <input
         type="text"

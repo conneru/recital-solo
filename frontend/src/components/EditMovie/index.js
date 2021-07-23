@@ -4,6 +4,8 @@ import { fetchMovies } from "../../store/movie";
 import { useHistory, useParams } from "react-router-dom";
 import { editMovie } from "../../store/movie";
 
+import "./EditMovie.css";
+
 function EditMovie() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -37,7 +39,7 @@ function EditMovie() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="create" onSubmit={handleSubmit}>
       <label for="title">Movie Title</label>
       <input
         type="text"

@@ -43,7 +43,7 @@ function Navigation({ isLoaded }) {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button type="submit">search</button>
+          <button type="submit">🔎</button>
         </form>
       </div>
     </nav>

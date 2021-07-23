@@ -24,24 +24,6 @@ function MoviePage() {
 
   return (
     <div className="movieContainer">
-      {user ? (
-        movie.userId === user.id ? (
-          <button
-            onClick={() =>
-              dispatch(deleteMovie(movie.id)).then(history.push("/movies"))
-            }
-          >
-            delete
-          </button>
-        ) : null
-      ) : null}
-      {user ? (
-        movie.userId === user.id ? (
-          <button onClick={() => history.push(`/movie/edit/${movie.id}`)}>
-            edit
-          </button>
-        ) : null
-      ) : null}
       <img id="headerImg" src={movie.imageUrl} alt={movie.title} />
       <img id="cover" src={movie.imageUrl} alt={movie.title} />
       <div id="movieInfo">
@@ -53,6 +35,28 @@ function MoviePage() {
       </div>
       <AudioPlayer />
       {/* <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" /> */}
+      {user ? (
+        movie.userId === user.id ? (
+          <button
+            onClick={() => history.push(`/movie/edit/${movie.id}`)}
+            id="editBut"
+          >
+            edit
+          </button>
+        ) : null
+      ) : null}
+      {user ? (
+        movie.userId === user.id ? (
+          <button
+            onClick={() =>
+              dispatch(deleteMovie(movie.id)).then(history.push("/movies"))
+            }
+            id="deleteBut"
+          >
+            delete
+          </button>
+        ) : null
+      ) : null}
     </div>
   );
 }
