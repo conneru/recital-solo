@@ -1,6 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { Movie, Quote } = require("../../db/models/");
+const { Op } = require("sequelize");
 
 const router = express.Router();
 
@@ -23,9 +24,34 @@ router.get(
 );
 
 router.get(
+  "/search/:content",
+  asyncHandler(async (req, res) => {
+    const movies = await Movie.findAll({
+      where: {
+        title: {
+          [Op.iLike]: "%" + req.params.content+ '%',
+        },
+      },
+    });
+
+    return res.json(movies);
+  })
+);
+
+router.get(
+  "/genre/:genre",
+  asyncHandler(async (req, res) => {
+    const genre = req.params.genre;
+    const movies = await Movie.findAll({ where: { genre } });
+
+    return res.json(movies);
+  })
+);
+
+router.get(
   "/:id",
   asyncHandler(async (req, res) => {
-    const movie = await Movie.findByPk(req.params.id, { include: [Quote] });
+    const movie = await Movie.findByPk(req.params.id);
 
     return res.json(movie);
   })

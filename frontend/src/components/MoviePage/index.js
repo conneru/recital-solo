@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import "./MoviePage.css";
 import ReactPlayer from "react-player";
 import AudioPlayer from "../AudioPlayer";
+import { getAllQuotes } from "../../store/quote";
 
 function MoviePage() {
   const { id } = useParams();
@@ -13,7 +14,8 @@ function MoviePage() {
 
   useEffect(() => {
     dispatch(fetchOneMovie(id));
-  }, []);
+    dispatch(getAllQuotes(id));
+  }, [dispatch]);
 
   const history = useHistory();
 

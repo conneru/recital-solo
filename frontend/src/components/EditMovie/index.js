@@ -71,12 +71,21 @@ function EditMovie() {
         onChange={(e) => setDirector(e.target.value)}
       />
       <label for="genre">Genre</label>
-      <input
-        type="text"
+      <select
         name="genre"
         value={genre}
         onChange={(e) => setGenre(e.target.value)}
-      />
+      >
+        <option value="Action">Action</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Drama">Drama</option>
+        <option value="Horror">Horror</option>
+        <option value="Mystery">Mystery</option>
+        <option value="Romance">Romance</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Western">Western</option>
+      </select>
       <label for="image">Movie Cover</label>
       <input
         type="text"
