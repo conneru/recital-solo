@@ -5,12 +5,14 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import Home from "./components/HomePage";
+import AllMovies from "./components/AllMovies";
 import MoviePage from "./components/MoviePage";
 import CreateMovie from "./components/CreateMovie";
 import EditMovie from "./components/EditMovie";
 import CreateQuote from "./components/CreateQuote";
 import EditQuote from "./components/EditQuote";
+import HomePage from "./components/HomePage";
+import Search from "./components/Search";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -23,8 +25,11 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
           <Route exact path="/movies">
-            <Home />
+            <AllMovies />
           </Route>
           <Route path="/login">
             <LoginFormPage />
@@ -46,6 +51,9 @@ function App() {
           </Route>
           <Route path="/movie/:id/quote/edit/:quoteId">
             <EditQuote />
+          </Route>
+          <Route path="/search/:content">
+            <Search />
           </Route>
           <Route>
             <h1>404 Page Not Found</h1>

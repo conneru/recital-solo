@@ -1,35 +1,133 @@
-// const db = require("../../../../backend/db/models");
-// const { Movie } = db;
-// import db from "../../../../backend/db";
-import { fetchMovies, fetchOneMovie } from "../../store/movie";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import homepage from "../../images/homepage.png";
+import { Route, Switch, Link } from "react-router-dom";
+import AllMovies from "../AllMovies";
+import MovieByGenre from "../MovieByGenre";
+import { useState } from "react";
 import "./HomePage.css";
 
-function Home() {
-  const dispatch = useDispatch();
+function HomePage() {
+  const [all, setAll] = useState(false);
+  const [action, setAction] = useState(false);
+  const [comedy, setComedy] = useState(false);
+  const [drama, setDrama] = useState(false);
+  const [scifi, setScifi] = useState(false);
+  const [horror, setHorror] = useState(false);
+  const [mystery, setMystery] = useState(false);
+  const [romance, setRomance] = useState(false);
+  const [thriller, setThriller] = useState(false);
+  const [western, setWestern] = useState(false);
 
-  useEffect(() => {
-    dispatch(fetchMovies());
-    dispatch(fetchOneMovie(-1));
-  }, [dispatch]);
+  function set() {
+    setAll(false);
+    setAction(false);
+    setComedy(false);
+    setDrama(false);
+    setScifi(false);
+    setHorror(false);
+    setMystery(false);
+    setRomance(false);
+    setThriller(false);
+    setWestern(false);
+  }
 
-  const movies = useSelector((state) => state.movieState.movies);
   return (
-    <div>
-      <h1>Recital</h1>
-      <div id="movieContainer">
-        {movies.map((movie) => (
-          <div id="movieCard" key={movie.title}>
-            <Link to={`/movies/${movie.id}`}>
-              <img src={movie.imageUrl} alt={movie.title} />
-            </Link>
-          </div>
-        ))}
+    <div className="homeContainer">
+      <div className="homePageImage">
+        <img src={homepage} alt="homepage" />
       </div>
+      <div className="newMovies"></div>
+      <button
+        onClick={() => {
+          set();
+          setAll(true);
+        }}
+      >
+        All
+      </button>
+      <button
+        onClick={() => {
+          set();
+          setAction(true);
+        }}
+      >
+        Action
+      </button>
+      <button
+        onClick={() => {
+          set();
+          setComedy(true);
+        }}
+      >
+        Comedy
+      </button>
+      <button
+        onClick={() => {
+          set();
+          setDrama(true);
+        }}
+      >
+        Drama
+      </button>
+      <button
+        onClick={() => {
+          set();
+          setHorror(true);
+        }}
+      >
+        Horror
+      </button>
+      <button
+        onClick={() => {
+          set();
+          setMystery(true);
+        }}
+      >
+        Mystery
+      </button>
+      <button
+        onClick={() => {
+          set();
+          setRomance(true);
+        }}
+      >
+        Romance
+      </button>
+      <button
+        onClick={() => {
+          set();
+          setScifi(true);
+        }}
+      >
+        Sci-Fi
+      </button>
+      <button
+        onClick={() => {
+          set();
+          setThriller(true);
+        }}
+      >
+        Thriller
+      </button>
+      <button
+        onClick={() => {
+          set();
+          setWestern(true);
+        }}
+      >
+        Western
+      </button>
+      {all ? <AllMovies /> : null}
+      {action ? <MovieByGenre genre="Action" title="Action" /> : null}
+      {comedy ? <MovieByGenre genre="Comedy" title="Comedy" /> : null}
+      {drama ? <MovieByGenre genre="Drama" title="Drama" /> : null}
+      {horror ? <MovieByGenre genre="Horror" title="Horror" /> : null}
+      {mystery ? <MovieByGenre genre="Mystery" title="Mystery" /> : null}
+      {romance ? <MovieByGenre genre="Romance" title="Romance" /> : null}
+      {scifi ? <MovieByGenre genre="Sci-Fi" title="Sci-Fi" /> : null}
+      {thriller ? <MovieByGenre genre="Thriller" title="Thriller" /> : null}
+      {western ? <MovieByGenre genre="Western" title="Western" /> : null}
     </div>
   );
 }
 
-export default Home;
+export default HomePage;

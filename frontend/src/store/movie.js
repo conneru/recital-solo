@@ -67,6 +67,14 @@ export const fetchOneMovie = (id) => async (dispatch) => {
   }
 };
 
+export const fetchByGenre = (genre) => async (dispatch) => {
+  const res = await csrfFetch(`/api/movies/genre/${genre}`);
+  if (res.ok) {
+    const movies = await res.json();
+    dispatch(getMovies(movies));
+  }
+};
+
 export const submitForm = (payload) => async (dispatch) => {
   const res = await csrfFetch("/api/movies", {
     method: "POST",
@@ -76,6 +84,14 @@ export const submitForm = (payload) => async (dispatch) => {
 
   const movie = await res.json();
   if (res.ok) dispatch(addMovie(movie));
+};
+
+export const search = (content) => async (dispatch) => {
+  const res = await csrfFetch(`/api/movies/search/${content}`);
+  if (res.ok) {
+    const movies = await res.json();
+    dispatch(getMovies(movies));
+  }
 };
 
 const initialState = { movies: [], curMovie: {} };

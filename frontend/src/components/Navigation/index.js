@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
@@ -7,6 +7,7 @@ import "./Navigation.css";
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [search, setSearch] = useState("");
+  const history = useHistory();
 
   let sessionLinks;
   if (sessionUser) {
@@ -37,7 +38,7 @@ function Navigation({ isLoaded }) {
             {isLoaded && sessionLinks}
           </li>
         </ul>
-        <form>
+        <form onSubmit={() => history.push(`/search/${search}`)}>
           <input
             type="text"
             value={search}
