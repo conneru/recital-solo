@@ -67,6 +67,14 @@ export const fetchOneMovie = (id) => async (dispatch) => {
   }
 };
 
+export const fetchByGenre = (genre) => async (dispatch) => {
+  const res = await csrfFetch(`/api/movies/genre/${genre}`);
+  if (res.ok) {
+    const movies = await res.json();
+    dispatch(getMovies(movies));
+  }
+};
+
 export const submitForm = (payload) => async (dispatch) => {
   const res = await csrfFetch("/api/movies", {
     method: "POST",
@@ -78,7 +86,15 @@ export const submitForm = (payload) => async (dispatch) => {
   if (res.ok) dispatch(addMovie(movie));
 };
 
-const initialState = { movies: [], curMovie: {}, quotes: [] };
+export const search = (content) => async (dispatch) => {
+  const res = await csrfFetch(`/api/movies/search/${content}`);
+  if (res.ok) {
+    const movies = await res.json();
+    dispatch(getMovies(movies));
+  }
+};
+
+const initialState = { movies: [], curMovie: {} };
 
 const movieReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -103,7 +119,6 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         curMovie: { ...action.movie },
-        quotes: [...action.movie.Quotes],
       };
     default:
       return state;

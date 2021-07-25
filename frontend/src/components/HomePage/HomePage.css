@@ -1,25 +1,4 @@
-#movieCard {
-  float: left;
-  max-width: 220px;
-  max-height: 300px;
-  min-width: 220px;
-  min-height: 300px;
-  padding: 20px;
-}
-
-#movieContainer {
-  /* width: 800px; */
-  /* max-width: 800px; */
-  display: flex;
-  justify-content: center;
-}
-
-img {
-  width: 100%;
-  height: 100%;
-}
-
-h1 {
-  display: flex;
-  justify-content: center;
+.homePageImage {
+  max-width: 600px;
+  max-height: 800px;
 }
