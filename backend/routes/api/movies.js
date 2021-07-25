@@ -25,7 +25,7 @@ router.get(
 router.get(
   "/:id",
   asyncHandler(async (req, res) => {
-    const movie = await Movie.findByPk(req.params.id, { include: [Quote] });
+    const movie = await Movie.findByPk(req.params.id);
 
     return res.json(movie);
   })

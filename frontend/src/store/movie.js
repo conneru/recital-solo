@@ -78,7 +78,7 @@ export const submitForm = (payload) => async (dispatch) => {
   if (res.ok) dispatch(addMovie(movie));
 };
 
-const initialState = { movies: [], curMovie: {}, quotes: [] };
+const initialState = { movies: [], curMovie: {} };
 
 const movieReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -103,7 +103,6 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         curMovie: { ...action.movie },
-        quotes: [...action.movie.Quotes],
       };
     default:
       return state;

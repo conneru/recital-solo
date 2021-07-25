@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { deleteQuote } from "../../store/quote";
 import { fetchMovies, fetchOneMovie } from "../../store/movie";
 
@@ -10,10 +10,15 @@ function AudioPlayer() {
   const { id } = useParams();
 
   const dispatch = useDispatch();
-
+  const history = useHistory();
   useEffect(() => {
     dispatch(fetchOneMovie(id));
   }, [dispatch]);
+
+  function clearPlayer() {
+    setTitle("");
+    setUrl("");
+  }
 
   function handleClick(e) {
     const [title, url] = e.target.value.split(",");
@@ -23,7 +28,7 @@ function AudioPlayer() {
   }
   const movie = useSelector((state) => state.movieState.curMovie);
   const user = useSelector((state) => state.session.user);
-  const quotes = useSelector((state) => state.movieState.quotes);
+  const quotes = useSelector((state) => state.quoteState.quotes);
 
   return (
     <div id="audioPlayer">
@@ -38,15 +43,30 @@ function AudioPlayer() {
             onClick={handleClick}
             value={[quote.title, quote.url]}
             key={quote.title}
-            class="playButton"
+            className="playButton"
           >
             ▶
           </button>
           <h3 id="quoteTitle">{quote.title}</h3>
           {user ? (
             user.id === quote.userId ? (
-              <button onClick={() => dispatch(deleteQuote(quote.id))}>
+              <button
+                onClick={() =>
+                  dispatch(deleteQuote(quote.id)).then(clearPlayer())
+                }
+              >
                 Delete
+              </button>
+            ) : null
+          ) : null}
+          {user ? (
+            user.id === quote.userId ? (
+              <button
+                onClick={() =>
+                  history.push(`/movie/${movie.id}/quote/edit/${quote.id}`)
+                }
+              >
+                Edit
               </button>
             ) : null
           ) : null}
@@ -54,7 +74,7 @@ function AudioPlayer() {
       ))}
       {user && (
         <div id="createQuote">
-          <Link to="/quote/create">Add a new quote!</Link>
+          <Link to={`/movie/${id}/quote`}>Add a new quote!</Link>
         </div>
       )}
     </div>

@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import movieReducer from "./movie";
+import quoteReducer from "./quote";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   movieState: movieReducer,
+  quoteState: quoteReducer,
 });
 
 let enhancer;

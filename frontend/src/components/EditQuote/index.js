@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createQuote } from "../../store/quote";
+import { editQuote } from "../../store/quote";
 import { useHistory, useParams } from "react-router-dom";
 
-function CreateQuote() {
-  const [title, setTitle] = useState("");
-  const [url, setUrl] = useState("");
-  const { id } = useParams();
-
+function EditQuote() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { id, quoteId } = useParams();
   const user = useSelector((state) => state.session.user);
+  const quotes = useSelector((state) => state.quoteState.quotes);
+  const quote = quotes.find((quote) => quote.id === Number(quoteId));
+
+  const [title, setTitle] = useState(quote.title);
+  const [url, setUrl] = useState(quote.url);
 
   function handleSubmit() {
     const form = {
@@ -20,7 +22,7 @@ function CreateQuote() {
       title,
     };
 
-    dispatch(createQuote(form));
+    dispatch(editQuote(form, quoteId));
     history.push(`/movies/${id}`);
   }
   return (
@@ -42,4 +44,4 @@ function CreateQuote() {
   );
 }
 
-export default CreateQuote;
+export default EditQuote;

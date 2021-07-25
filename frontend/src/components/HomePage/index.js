@@ -1,7 +1,7 @@
 // const db = require("../../../../backend/db/models");
 // const { Movie } = db;
 // import db from "../../../../backend/db";
-import { fetchMovies } from "../../store/movie";
+import { fetchMovies, fetchOneMovie } from "../../store/movie";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(fetchMovies());
+    dispatch(fetchOneMovie(-1));
   }, [dispatch]);
 
   const movies = useSelector((state) => state.movieState.movies);
