@@ -47,7 +47,7 @@ function AudioPlayer() {
           >
             ▶
           </button>
-          <h3 id="quoteTitle">{quote.title}</h3>
+          <h3 id="quoteTitle">"{quote.title}"</h3>
           {user ? (
             user.id === quote.userId ? (
               <button

@@ -82,6 +82,8 @@ span {
 
 #h4Title {
   padding-left: 30px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .deleteBut {
@@ -173,4 +175,5 @@ span {
 
 #quoteTitle {
   font-weight: 500;
+  font-size: 16px;
 }
