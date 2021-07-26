@@ -40,7 +40,7 @@ function EditMovie() {
 
   return (
     <form id="create" onSubmit={handleSubmit}>
-      <label for="title">Movie Title</label>
+      <label for="title">Edit Movie Title</label>
       <input
         type="text"
         name="title"
@@ -48,7 +48,7 @@ function EditMovie() {
         onChange={(e) => setTitle(e.target.value)}
         required
       />
-      <label for="date">Release Date</label>
+      <label for="date">Edit Release Date</label>
       <input
         type="number"
         name="date"
@@ -56,21 +56,21 @@ function EditMovie() {
         onChange={(e) => setDate(e.target.value)}
         required
       />
-      <label for="description">Description</label>
+      <label for="description">Edit Description</label>
       <textarea
         type="text"
         name="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-      <label for="director">Directors Name</label>
+      <label for="director">Edit Directors Name</label>
       <input
         type="text"
         name="director"
         value={director}
         onChange={(e) => setDirector(e.target.value)}
       />
-      <label for="genre">Genre</label>
+      <label for="genre">Edit Genre</label>
       <select
         name="genre"
         value={genre}
@@ -86,14 +86,14 @@ function EditMovie() {
         <option value="Thriller">Thriller</option>
         <option value="Western">Western</option>
       </select>
-      <label for="image">Movie Cover</label>
+      <label for="image">Edit Movie Poster Url</label>
       <input
         type="text"
         name="image"
         value={imageUrl}
         onChange={(e) => setImageUrl(e.target.value)}
       />
-      <label for="length">Movie Length</label>
+      <label for="length">Edit Movie Length</label>
       <input
         type="number"
         name="length"

@@ -1,4 +1,28 @@
+.homeContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 .homePageImage {
-  max-width: 600px;
-  max-height: 800px;
+  background-color: rgb(46, 46, 46);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#recitalImg {
+  width: 800px;
+  height: 500px;
+}
+
+.genres {
+  display: flex;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  justify-content: center;
 }

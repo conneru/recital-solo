@@ -2,7 +2,6 @@ import { fetchOneMovie, search } from "../../store/movie";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import "./AllMovies.css";
 
 function Search() {
   const dispatch = useDispatch();
@@ -15,7 +14,10 @@ function Search() {
 
   const movies = useSelector((state) => state.movieState.movies);
   return (
-    <div>
+    <div
+      style={{ backgroundColor: "#504e66", height: "100%" }}
+      id="entireContainer"
+    >
       <h1>Search</h1>
       <div id="movieContainer">
         {movies.map((movie) => (
