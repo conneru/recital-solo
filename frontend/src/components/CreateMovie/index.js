@@ -36,7 +36,7 @@ function CreateMovie() {
       length,
     };
     dispatch(submitForm(form));
-    history.push("/movies");
+    history.push("/");
   }
 
   return (
@@ -87,7 +87,7 @@ function CreateMovie() {
         <option value="Thriller">Thriller</option>
         <option value="Western">Western</option>
       </select>
-      <label for="image">Movie Cover</label>
+      <label for="image">Movie Poster Url</label>
       <input
         type="text"
         name="image"

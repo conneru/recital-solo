@@ -17,7 +17,7 @@ function AllMovies() {
 
   const movies = useSelector((state) => state.movieState.movies);
   return (
-    <div>
+    <div style={{ backgroundColor: "#6fdcf7" }} id="entireContainer">
       <h1>All</h1>
       <div id="movieContainer">
         {movies.map((movie) => (

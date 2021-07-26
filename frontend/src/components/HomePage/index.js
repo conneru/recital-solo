@@ -6,7 +6,7 @@ import { useState } from "react";
 import "./HomePage.css";
 
 function HomePage() {
-  const [all, setAll] = useState(false);
+  const [all, setAll] = useState(true);
   const [action, setAction] = useState(false);
   const [comedy, setComedy] = useState(false);
   const [drama, setDrama] = useState(false);
@@ -16,6 +16,8 @@ function HomePage() {
   const [romance, setRomance] = useState(false);
   const [thriller, setThriller] = useState(false);
   const [western, setWestern] = useState(false);
+
+  const [color, setColor] = useState("#6fdcf7");
 
   function set() {
     setAll(false);
@@ -33,99 +35,138 @@ function HomePage() {
   return (
     <div className="homeContainer">
       <div className="homePageImage">
-        <img src={homepage} alt="homepage" />
+        <img src={homepage} alt="homepage" id="recitalImg" />
       </div>
-      <div className="newMovies"></div>
-      <button
-        onClick={() => {
-          set();
-          setAll(true);
-        }}
-      >
-        All
-      </button>
-      <button
-        onClick={() => {
-          set();
-          setAction(true);
-        }}
-      >
-        Action
-      </button>
-      <button
-        onClick={() => {
-          set();
-          setComedy(true);
-        }}
-      >
-        Comedy
-      </button>
-      <button
-        onClick={() => {
-          set();
-          setDrama(true);
-        }}
-      >
-        Drama
-      </button>
-      <button
-        onClick={() => {
-          set();
-          setHorror(true);
-        }}
-      >
-        Horror
-      </button>
-      <button
-        onClick={() => {
-          set();
-          setMystery(true);
-        }}
-      >
-        Mystery
-      </button>
-      <button
-        onClick={() => {
-          set();
-          setRomance(true);
-        }}
-      >
-        Romance
-      </button>
-      <button
-        onClick={() => {
-          set();
-          setScifi(true);
-        }}
-      >
-        Sci-Fi
-      </button>
-      <button
-        onClick={() => {
-          set();
-          setThriller(true);
-        }}
-      >
-        Thriller
-      </button>
-      <button
-        onClick={() => {
-          set();
-          setWestern(true);
-        }}
-      >
-        Western
-      </button>
+      <div className="genres" style={{ backgroundColor: color }}>
+        <button
+          onClick={() => {
+            set();
+            setAll(true);
+            setColor("#6fdcf7");
+          }}
+          style={{ backgroundColor: "#6fdcf7" }}
+        >
+          All
+        </button>
+        <button
+          onClick={() => {
+            set();
+            setAction(true);
+            setColor("#ff9757");
+          }}
+          style={{ backgroundColor: "#ff9757" }}
+        >
+          Action
+        </button>
+        <button
+          onClick={() => {
+            set();
+            setComedy(true);
+            setColor("#98ff96");
+          }}
+          style={{ backgroundColor: "#98ff96" }}
+        >
+          Comedy
+        </button>
+        <button
+          onClick={() => {
+            set();
+            setDrama(true);
+            setColor("#db5e56");
+          }}
+          style={{ backgroundColor: "#db5e56" }}
+        >
+          Drama
+        </button>
+        <button
+          onClick={() => {
+            set();
+            setHorror(true);
+            setColor("#7e74ed");
+          }}
+          style={{ backgroundColor: "#7e74ed" }}
+        >
+          Horror
+        </button>
+        <button
+          onClick={() => {
+            set();
+            setMystery(true);
+            setColor("#d482f5");
+          }}
+          style={{ backgroundColor: "#d482f5" }}
+        >
+          Mystery
+        </button>
+        <button
+          onClick={() => {
+            set();
+            setRomance(true);
+            setColor("#f582a4");
+          }}
+          style={{ backgroundColor: "#f582a4" }}
+        >
+          Romance
+        </button>
+        <button
+          onClick={() => {
+            set();
+            setScifi(true);
+            setColor("#f5f182");
+          }}
+          style={{ backgroundColor: "#f5f182" }}
+        >
+          Sci-Fi
+        </button>
+        <button
+          onClick={() => {
+            set();
+            setThriller(true);
+            setColor("#82f5a3");
+          }}
+          style={{ backgroundColor: "#82f5a3" }}
+        >
+          Thriller
+        </button>
+        <button
+          onClick={() => {
+            set();
+            setWestern(true);
+            setColor("#f7bc74");
+          }}
+          style={{ backgroundColor: "#f7bc74" }}
+        >
+          Western
+        </button>
+      </div>
       {all ? <AllMovies /> : null}
-      {action ? <MovieByGenre genre="Action" title="Action" /> : null}
-      {comedy ? <MovieByGenre genre="Comedy" title="Comedy" /> : null}
-      {drama ? <MovieByGenre genre="Drama" title="Drama" /> : null}
-      {horror ? <MovieByGenre genre="Horror" title="Horror" /> : null}
-      {mystery ? <MovieByGenre genre="Mystery" title="Mystery" /> : null}
-      {romance ? <MovieByGenre genre="Romance" title="Romance" /> : null}
-      {scifi ? <MovieByGenre genre="Sci-Fi" title="Sci-Fi" /> : null}
-      {thriller ? <MovieByGenre genre="Thriller" title="Thriller" /> : null}
-      {western ? <MovieByGenre genre="Western" title="Western" /> : null}
+      {action ? (
+        <MovieByGenre genre="Action" title="Action" color="#ff9757" />
+      ) : null}
+      {comedy ? (
+        <MovieByGenre genre="Comedy" title="Comedy" color="#98ff96" />
+      ) : null}
+      {drama ? (
+        <MovieByGenre genre="Drama" title="Drama" color="#db5e56" />
+      ) : null}
+      {horror ? (
+        <MovieByGenre genre="Horror" title="Horror" color="#7e74ed" />
+      ) : null}
+      {mystery ? (
+        <MovieByGenre genre="Mystery" title="Mystery" color="#d482f5" />
+      ) : null}
+      {romance ? (
+        <MovieByGenre genre="Romance" title="Romance" color="#f582a4" />
+      ) : null}
+      {scifi ? (
+        <MovieByGenre genre="Sci-Fi" title="Sci-Fi" color="#f5f182" />
+      ) : null}
+      {thriller ? (
+        <MovieByGenre genre="Thriller" title="Thriller" color="#82f5a3" />
+      ) : null}
+      {western ? (
+        <MovieByGenre genre="Western" title="Western" color="#f7bc74" />
+      ) : null}
     </div>
   );
 }

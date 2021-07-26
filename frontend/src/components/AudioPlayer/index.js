@@ -47,15 +47,16 @@ function AudioPlayer() {
           >
             ▶
           </button>
-          <h3 id="quoteTitle">{quote.title}</h3>
+          <h3 id="quoteTitle">"{quote.title}"</h3>
           {user ? (
             user.id === quote.userId ? (
               <button
                 onClick={() =>
-                  dispatch(deleteQuote(quote.id)).then(clearPlayer())
+                  history.push(`/movie/${movie.id}/quote/edit/${quote.id}`)
                 }
+                className="quoteEdit"
               >
-                Delete
+                Edit
               </button>
             ) : null
           ) : null}
@@ -63,10 +64,11 @@ function AudioPlayer() {
             user.id === quote.userId ? (
               <button
                 onClick={() =>
-                  history.push(`/movie/${movie.id}/quote/edit/${quote.id}`)
+                  dispatch(deleteQuote(quote.id)).then(clearPlayer())
                 }
+                className="quoteDel"
               >
-                Edit
+                Delete
               </button>
             ) : null
           ) : null}
@@ -74,7 +76,9 @@ function AudioPlayer() {
       ))}
       {user && (
         <div id="createQuote">
-          <Link to={`/movie/${id}/quote`}>Add a new quote!</Link>
+          <Link to={`/movie/${id}/quote`} id="addQuote">
+            Add a new quote!
+          </Link>
         </div>
       )}
     </div>

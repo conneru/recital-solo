@@ -15,44 +15,37 @@ module.exports = {
     return queryInterface.bulkInsert("Quotes", [
       {
         userId: 1,
-        movieId: 1,
-        url: "https://recital-solo.s3.us-west-2.amazonaws.com/I+am+your+Father.mp3",
-        title: "test1",
+        movieId: 42,
+        url: "https://recital-solo.s3.us-west-2.amazonaws.com/im+afraid+dave.m4a",
+        title: "Bad Feeling",
       },
 
       {
         userId: 1,
         movieId: 1,
-        url: "https://recital-solo.s3.us-west-2.amazonaws.com/Alright+Alright+Alright+(Dazed+and+Confused).mp3",
-        title: "test2",
+        url: "https://recital-solo.s3.us-west-2.amazonaws.com/im+afraid+dave.m4a",
+        title: "I'm afraid",
       },
 
       {
         userId: 1,
         movieId: 1,
-        url: "https://recital-solo.s3.us-west-2.amazonaws.com/I+am+your+Father.mp3",
-        title: "test3",
+        url: "https://recital-solo.s3.us-west-2.amazonaws.com/poor+decisions.m4a",
+        title: "Poor decisions",
       },
 
       {
         userId: 1,
         movieId: 1,
-        url: "https://recital-solo.s3.us-west-2.amazonaws.com/Alright+Alright+Alright+(Dazed+and+Confused).mp3",
-        title: "test4",
+        url: "https://recital-solo.s3.us-west-2.amazonaws.com/too+important.m4a",
+        title: "This mission is too important",
       },
 
       {
         userId: 1,
         movieId: 1,
-        url: "https://recital-solo.s3.us-west-2.amazonaws.com/I+am+your+Father.mp3",
-        title: "test5",
-      },
-
-      {
-        userId: 1,
-        movieId: 1,
-        url: "https://recital-solo.s3.us-west-2.amazonaws.com/I+am+your+Father.mp3",
-        title: "test6",
+        url: "https://recital-solo.s3.us-west-2.amazonaws.com/whatare+you+doing.m4a",
+        title: "What do you think you're doing?",
       },
     ]);
   },
