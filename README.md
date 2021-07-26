@@ -1,4 +1,4 @@
-# How to use Recital!
+# How to install and use Recital!
  
 - Make a `.env` file at the root level and paste in the following:
  
