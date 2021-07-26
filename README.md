@@ -26,7 +26,7 @@ JWT_EXPIRES_IN=604800
  
  - While still in `/backend` run `npx dotenv sequelize db:create`, `npx dotenv sequelize db:migrate`, and `npx dotenv sequelize db:seed:all` in that order
 
- - After the database and created and seeded properly while still in `/backend` run `npm start`
+ - After the database is created and seeded properly while still in `/backend` run `npm start`
  
  - Open a new terminal then `cd` into the `/frontend` folder and `npm install`
  
