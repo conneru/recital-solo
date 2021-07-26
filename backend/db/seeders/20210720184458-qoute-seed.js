@@ -22,28 +22,28 @@ module.exports = {
 
       {
         userId: 1,
-        movieId: 1,
+        movieId: 42,
         url: "https://recital-solo.s3.us-west-2.amazonaws.com/im+afraid+dave.m4a",
         title: "I'm afraid",
       },
 
       {
         userId: 1,
-        movieId: 1,
+        movieId: 42,
         url: "https://recital-solo.s3.us-west-2.amazonaws.com/poor+decisions.m4a",
         title: "Poor decisions",
       },
 
       {
         userId: 1,
-        movieId: 1,
+        movieId: 42,
         url: "https://recital-solo.s3.us-west-2.amazonaws.com/too+important.m4a",
         title: "This mission is too important",
       },
 
       {
         userId: 1,
-        movieId: 1,
+        movieId: 42,
         url: "https://recital-solo.s3.us-west-2.amazonaws.com/whatare+you+doing.m4a",
         title: "What do you think you're doing?",
       },
