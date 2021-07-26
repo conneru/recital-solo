@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editQuote } from "../../store/quote";
+import { editQuote, getAllQuotes } from "../../store/quote";
 import { useHistory, useParams } from "react-router-dom";
-
+import "./EditQuote.css";
 function EditQuote() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -23,16 +23,19 @@ function EditQuote() {
     };
 
     dispatch(editQuote(form, quoteId));
+    dispatch(getAllQuotes(id));
     history.push(`/movies/${id}`);
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="create">
+      <label for="title">Edit Quote Title</label>
       <input
         type="text"
         placeholder="Quote Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
+      <label for="url">Edit Quote Url</label>
       <input
         type="text"
         placeholder="Quote Url"

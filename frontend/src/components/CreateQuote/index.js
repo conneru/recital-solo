@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createQuote } from "../../store/quote";
 import { useHistory, useParams } from "react-router-dom";
-
+import "./CreateQuote.css";
 function CreateQuote() {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
@@ -24,18 +24,22 @@ function CreateQuote() {
     history.push(`/movies/${id}`);
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="create">
+      <label for="title">Quote Title</label>
       <input
         type="text"
         placeholder="Quote Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        name="title"
       />
+      <label for="url">Quote Url</label>
       <input
         type="text"
         placeholder="Quote Url"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
+        name="url"
       />
       <button type="submit">submit</button>
     </form>

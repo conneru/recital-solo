@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./MoviePage.css";
-import ReactPlayer from "react-player";
 import AudioPlayer from "../AudioPlayer";
 import { getAllQuotes } from "../../store/quote";
 
@@ -29,21 +28,21 @@ function MoviePage() {
       <img id="headerImg" src={movie.imageUrl} alt={movie.title} />
       <img id="cover" src={movie.imageUrl} alt={movie.title} />
       <div id="movieInfo">
-        <h1>
-          {movie.title} <span>({movie.releaseDate})</span>
+        <h1 id="title">
+          {movie.title} <span> ({movie.releaseDate}) </span>
         </h1>
-        <p>Dir. {movie.director}</p>
-        <p>{movie.description}</p>
+        {movie.director ? <p>Dir. {movie.director}</p> : null}
+        {movie.description ? <p>{movie.description}</p> : null}
+        {movie.length ? <p>{movie.length} Minutes</p> : null}
       </div>
       <AudioPlayer />
-      {/* <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" /> */}
       {user ? (
         movie.userId === user.id ? (
           <button
             onClick={() => history.push(`/movie/edit/${movie.id}`)}
-            id="editBut"
+            className="editBut"
           >
-            edit
+            Edit
           </button>
         ) : null
       ) : null}
@@ -51,11 +50,11 @@ function MoviePage() {
         movie.userId === user.id ? (
           <button
             onClick={() =>
-              dispatch(deleteMovie(movie.id)).then(history.push("/movies"))
+              dispatch(deleteMovie(movie.id)).then(history.push("/"))
             }
-            id="deleteBut"
+            className="deleteBut"
           >
-            delete
+            Delete
           </button>
         ) : null
       ) : null}

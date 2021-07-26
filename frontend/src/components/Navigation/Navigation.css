@@ -1,9 +1,35 @@
 nav {
   background-color: white;
-  display: flex;
-  justify-content: space-around;
+  /* display: flex; */
+  /* justify-content: center; */
+  height: 70px;
 }
 
-li {
-  justify-content: space-between;
+input {
+  height: 20px;
+  /* margin-right: 50px; */
+}
+
+#navWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#logo {
+  margin: 0px;
+  height: 50px;
+  width: 200px;
+}
+
+#createLogo {
+  margin-top: 10px;
+  /* margin-left: 30em;
+  padding-right: 50px; */
+  height: 40px;
+  width: 150px;
+}
+
+#ulBad {
+  padding: 0px;
 }
