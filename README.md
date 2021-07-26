@@ -1,6 +1,6 @@
 # How to install and use Recital!
  
-- Make a `.env` file at the root level and paste in the following:
+- cd into `/backend` and create a `.env` file and paste in the following:
  
 PORT=5000
 
@@ -20,7 +20,7 @@ JWT_EXPIRES_IN=604800
 
 - You can run `openssl rand -base64 10` in your terminal to generate a JWT_SECRET
 
- - Now `cd` into the `/backend` folder and `npm install`
+ - Now while still in `/backend` run `npm install`
 
  - Now that the dependencies are installed you'll have to create and seed the database
  
