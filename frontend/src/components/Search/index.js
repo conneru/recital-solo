@@ -20,13 +20,17 @@ function Search() {
     >
       <h1>Search</h1>
       <div id="movieContainer">
-        {movies.map((movie) => (
-          <div id="movieCard" key={movie.title}>
-            <Link to={`/movies/${movie.id}`}>
-              <img src={movie.imageUrl} alt={movie.title} />
-            </Link>
-          </div>
-        ))}
+        {!movies.length ? (
+          <h1 id="nothing">No Movie or TV show matches this search</h1>
+        ) : (
+          movies.map((movie) => (
+            <div id="movieCard" key={movie.title}>
+              <Link to={`/movies/${movie.id}`}>
+                <img src={movie.imageUrl} alt={movie.title} />
+              </Link>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

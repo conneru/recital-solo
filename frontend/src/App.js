@@ -13,6 +13,7 @@ import CreateQuote from "./components/CreateQuote";
 import EditQuote from "./components/EditQuote";
 import HomePage from "./components/HomePage";
 import Search from "./components/Search";
+import Footer from "./components/Footer";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -60,6 +61,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

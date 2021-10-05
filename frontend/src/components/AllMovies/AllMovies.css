@@ -1,5 +1,5 @@
 #movieCard {
-  float: left;
+  /* float: left; */
   max-width: 220px;
   max-height: 300px;
   min-width: 220px;
@@ -17,9 +17,10 @@
 #movieContainer {
   /* width: 800px; */
   /* display: inline-flex; */
-
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 50px;
+  /* padding: 50px; */
 }
 
 img {

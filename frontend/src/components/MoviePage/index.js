@@ -24,40 +24,42 @@ function MoviePage() {
   const movie = useSelector((state) => state.movieState.curMovie);
 
   return (
-    <div className="movieContainer">
-      <img id="headerImg" src={movie.imageUrl} alt={movie.title} />
-      <img id="cover" src={movie.imageUrl} alt={movie.title} />
-      <div id="movieInfo">
-        <h1 id="title">
-          {movie.title} <span> ({movie.releaseDate}) </span>
-        </h1>
-        {movie.director ? <p>Dir. {movie.director}</p> : null}
-        {movie.description ? <p>{movie.description}</p> : null}
-        {movie.length ? <p>{movie.length} Minutes</p> : null}
+    <div className="moviePageContainer">
+      <div className="movieContainer">
+        <img id="headerImg" src={movie.imageUrl} alt={movie.title} />
+        <img id="cover" src={movie.imageUrl} alt={movie.title} />
+        <div id="movieInfo">
+          <h1 id="title">
+            {movie.title} <span> ({movie.releaseDate}) </span>
+          </h1>
+          {movie.director ? <p>Dir. {movie.director}</p> : null}
+          {movie.description ? <p>{movie.description}</p> : null}
+          {movie.length ? <p>{movie.length} Minutes</p> : null}
+        </div>
+        <AudioPlayer />
+        {user ? (
+          movie.userId === user.id ? (
+            <button
+              onClick={() => history.push(`/movie/edit/${movie.id}`)}
+              className="editBut"
+            >
+              Edit
+            </button>
+          ) : null
+        ) : null}
+        {user ? (
+          movie.userId === user.id ? (
+            <button
+              onClick={() =>
+                dispatch(deleteMovie(movie.id)).then(history.push("/"))
+              }
+              className="deleteBut"
+            >
+              Delete
+            </button>
+          ) : null
+        ) : null}
       </div>
-      <AudioPlayer />
-      {user ? (
-        movie.userId === user.id ? (
-          <button
-            onClick={() => history.push(`/movie/edit/${movie.id}`)}
-            className="editBut"
-          >
-            Edit
-          </button>
-        ) : null
-      ) : null}
-      {user ? (
-        movie.userId === user.id ? (
-          <button
-            onClick={() =>
-              dispatch(deleteMovie(movie.id)).then(history.push("/"))
-            }
-            className="deleteBut"
-          >
-            Delete
-          </button>
-        ) : null
-      ) : null}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { deleteQuote } from "../../store/quote";
 import { fetchMovies, fetchOneMovie } from "../../store/movie";
+import "./AudioPlayer.css";
 
 function AudioPlayer() {
   const [url, setUrl] = useState("");
@@ -36,9 +37,9 @@ function AudioPlayer() {
         Quotes from <span>{movie.title} </span>
       </h3>
       <h4 id="h4Title">{title}</h4>
-      <audio controls autoPlay src={url} type="audio/mpeg" />
+      <audio controls autoPlay src={url} type="audio/mpeg" className="audio" />
       {quotes.map((quote) => (
-        <div>
+        <div className="quotes">
           <button
             onClick={handleClick}
             value={[quote.title, quote.url]}

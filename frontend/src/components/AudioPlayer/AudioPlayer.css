@@ -1,0 +1,16 @@
+.quotes {
+  /* padding-top: 60px; */
+}
+
+#createQuote {
+  padding-top: 60px;
+}
+
+#audioPlayer {
+  position: fixed;
+  top: 140px;
+}
+
+.audio {
+  padding-bottom: 60px;
+}

@@ -177,3 +177,8 @@ span {
   font-weight: 500;
   font-size: 16px;
 }
+
+.moviePageContainer {
+  display: flex;
+  justify-content: center;
+}
